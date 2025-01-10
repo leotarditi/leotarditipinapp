@@ -1,36 +1,121 @@
-# Frontend Senior (Web)
+Aquí tienes una versión mejorada y estructurada de lo que mencionaste, adaptada para el archivo `README.md`:
 
-## Desafio a resolver de Aplicativo Web:
+---
 
-Despliega la Web App en Vercel y sube el código a tu cuenta de Github, este repositorio debe ser público.
+# Agradecimiento
 
-### Requerimientos técnicos:
+Primero que nada, quiero agradecer por todo este proceso de selección. Fue un desafío muy interesante y enriquecedor, que aumentó aún más mis ganas de seguir trabajando con ustedes.  
+Si tienen cualquier consulta, no duden en enviarme un mail a [leotarditi@gmail.com](mailto:leotarditi@gmail.com).
 
-- Se debe usar NextJS como framework.
-- Se debe usar App Router para la navegación.
-- Se debe usar TailwindCSS para estilos.
-- Se debe usar Typescript como lenguaje.
-- El fetching de datos debe hacerse del lado del servidor en medida de lo posible según consideración del desarrollador.
-- Usar una librería de UI a preferencia de desarrollador.
-- Se deben mockear las peticiones de los endpoints de la API de producto para que la aplicación pueda ser probada. **Encontrarás la documentación de la API adjunto (open-api-spec.yml)**
+---
 
-> Se recomienda el uso de [JSON Server](https://www.npmjs.com/package/json-server) para la generación de datos de prueba. Pero puedes usar cualquier otra librería de servidor de datos.
+# Decisiones tomadas
 
-#### Interfaz de Página de Listado de Productos (PLP):
+1. **Mock de API**  
+   Inicialmente intenté usar Google Sheets como mock API debido a su facilidad de implementación y porque no requiere instrucciones adicionales para los evaluadores. Sin embargo, al final opté por utilizar las API Routes de Next.js para cumplir con los requisitos.
 
-- Se debe renderizar en la ruta raíz (/)
-- La interfaz debe permitir a los usuarios realizar búsqueda utilizando el código de SKU o nombre del producto a través de un campo de entrada de texto, este deberá tener un debounce de 500ms previo a realizar la búsqueda.
-- La interfaz debe mostrar un loader mientras la búsqueda se procesa.
-- El resultado de la búsqueda debe mostrar información básica del producto, incluyendo al menos el nombre del SKU, la categoría, marca y el precio.
-- Cada resultado de búsqueda debe incluir un botón "Ver Detalle" que redirija a la interfaz de Página de Producto (PDP).
-- **Opcional:** usar react-query para crear un paginado de scroll infinito manteniendo los valores iniciales del SSR
+2. **Diseño**  
+   Decidí truncar el título en una sola línea y la descripción en dos líneas para mantener una apariencia compacta y consistente en el diseño. Si el usuario desea más información, puede hacer clic en el botón "Ver más" o directamente en la imagen del producto.
 
-#### Interfaz de Página de Detalle de Producto (PDP):
+3. **Manejo de errores**
 
-- Se debe renderizar en la siguiente ruta: `/products/:sku`
-- Debe mostrarse un loader mientras se carga la información del lado del servidor.
-- La interfaz de Página de Producto debe mostrar la siguiente información:
-  Nombre del producto, código de SKU, foto principal del producto.
-  categoría, marca, precio de lista del producto y especificaciones del producto.
-- Debe mostrar un mensaje de “No encontrado” cuando fallé el API devuelva un error 404.
-- Deberá mostar un mensaje de “No se pudo cargar” cuando fallé el API devuelva un error 500.
+   - Usé `not-found.tsx` para manejar errores 404, mostrando un mensaje claro cuando el producto no se encuentra.
+   - Usé `global-error.tsx` para manejar errores 500, mostrando un mensaje adecuado si hay problemas en el servidor.
+
+4. **Optimización de imágenes**  
+   Convertí todas las imágenes a formato `webp` para reducir su tamaño y mejorar el rendimiento de la aplicación.
+
+5. **Scroll infinito y búsqueda**
+
+   - Implementé la funcionalidad de scroll infinito evaluando librerías como React Query y SWR, además de intentar soluciones nativas de React (`useEffect` y `useState`). Aunque logré una implementación funcional con React, me faltó tiempo para optimizar completamente el comportamiento en Next.js.
+   - Implementé la búsqueda con debounce de 500ms, cargando datos de manera eficiente desde el servidor.
+
+6. **Testing y Storybook**
+
+   - Logré integrar Storybook con un componente de botón básico. Por cuestiones de tiempo, no pude extender la cobertura a otros componentes como el SearchBox.
+   - Planeé realizar más pruebas unitarias e integrales, pero prioricé la funcionalidad básica del proyecto debido a limitaciones de tiempo.
+
+7. **Arquitectura del proyecto**
+
+   - Usé principios de Clean Architecture y Screaming Architecture para organizar el código.
+   - Documenté el proceso de desarrollo a través de commits bien estructurados.
+
+8. **Gestión de paquetes**  
+   Decidí utilizar Bun como administrador de paquetes en lugar de PNPM, considerando su rendimiento y simplicidad.
+
+---
+
+# Descripción del desafío
+
+## Objetivo: Desarrollo de una aplicación web para listado y detalle de productos.
+
+### Requerimientos técnicos
+
+- **Framework:** Next.js (usando App Router para la navegación).
+- **Estilos:** TailwindCSS.
+- **Lenguaje:** TypeScript.
+- **Fetching:** Prioridad a SSR según consideración del desarrollador.
+- **Mock API:** Se recomienda JSON Server, aunque se permite el uso de otras soluciones.
+
+### Páginas implementadas
+
+1. **Página de Listado de Productos (PLP)**
+
+   - Ruta raíz: `/`.
+   - Funcionalidades:
+     - Búsqueda por SKU o nombre (con debounce de 500ms).
+     - Scroll infinito para la paginación (opcional con React Query).
+     - Loader durante el procesamiento de la búsqueda.
+     - Redirección a la página de detalle al hacer clic en "Ver Detalle".
+
+2. **Página de Detalle de Producto (PDP)**
+   - Ruta: `/products/:sku`.
+   - Funcionalidades:
+     - Mostrar información del producto (nombre, SKU, foto, categoría, marca, precio y especificaciones).
+     - Manejo de errores 404 y 500 con mensajes personalizados.
+
+---
+
+# Instrucciones
+
+### Clonar el proyecto
+
+```bash
+git clone https://github.com/leotarditi/nombre-del-repositorio.git
+cd nombre-del-repositorio
+```
+
+### Instalar dependencias
+
+Con Bun:
+
+```bash
+bun install
+```
+
+Con PNPM (opcional):
+
+```bash
+pnpm install
+```
+
+### Correr el servidor de desarrollo
+
+```bash
+bun dev
+```
+
+### Correr Storybook
+
+```bash
+bun storybook
+```
+
+---
+
+# Link del desarrollo
+
+El proyecto está desplegado en Vercel y puedes probarlo en el siguiente enlace:  
+[https://leotarditipinapp.vercel.app/](https://leotarditipinapp.vercel.app/)
+
+---
