@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #000540;
+  --secondary-color: #fffade;
+  --tertiary-color: #faf8ff;
+
+  color-scheme: light;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000460;
+}
+
+.container {
+  max-width: 1200px;
+}
