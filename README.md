@@ -110,12 +110,3 @@ bun dev
 ```bash
 bun storybook
 ```
-
----
-
-# Link del desarrollo
-
-El proyecto está desplegado en Vercel y puedes probarlo en el siguiente enlace:  
-[https://leotarditipinapp.vercel.app/](https://leotarditipinapp.vercel.app/)
-
----
