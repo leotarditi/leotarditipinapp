@@ -1,7 +1,3 @@
-Aquí tienes una versión mejorada y estructurada de lo que mencionaste, adaptada para el archivo `README.md`:
-
----
-
 # Agradecimiento
 
 Primero que nada, quiero agradecer por todo este proceso de selección. Fue un desafío muy interesante y enriquecedor, que aumentó aún más mis ganas de seguir trabajando con ustedes.  
